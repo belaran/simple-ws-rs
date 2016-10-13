@@ -21,6 +21,7 @@
     <version.jboss.spec.javaee.6.0>3.0.3.Final</version.jboss.spec.javaee.6.0>
     <version.jboss.jaxrs.api.1.1>1.0.1.Final-redhat-3</version.jboss.jaxrs.api.1.1>
     <war.plugin.version>2.2</war.plugin.version>
+    <version.rpm.plugin>2.1.5</version.rpm.plugin>
   </properties>
 
   <dependencyManagement>
@@ -55,7 +56,32 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>rpm-maven-plugin</artifactId>
+        <version>${version.rpm.plugin}</version>
+        <executions>
+          <execution>
+            <id>generate-rpm</id>
+            <goals>
+              <goal>rpm</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <group>JBoss SET/Tools</group>
+          <packager>JBoss SET</packager>
+          <mappings>
+            <mapping>
+                <directory>/usr/share/${project.name}</directory>
+                <filemode>644</filemode>
+                <username>root</username>
+                <groupname>root</groupname>
+                <artifact />
+            </mapping>
+          </mappings>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
-
