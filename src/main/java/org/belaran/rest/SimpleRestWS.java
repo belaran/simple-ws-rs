@@ -44,6 +44,5 @@ public class SimpleRestWS {
         System.out.println(pojo);
         return Response.ok(pojo).build();
     }
-    
-    
+
 }
